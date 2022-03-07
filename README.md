@@ -2,17 +2,14 @@
 otp service written in go lang 
 
 
-type Mutation {
-  sendOTP(input: sendOTP!): Status!
-  verifyOTP(input: verifyOTP!): Status!
-  addOtpType(input: addOtpType!): Status!
-  removeOtpType(input: removeOtpType!): Status!
-}
-
-
-Query {
-  getOtpType: [OtpType]!
-}
+Mutation 
+ *sendOTP(input: sendOTP!): Status!
+ *verifyOTP(input: verifyOTP!): Status!
+ *addOtpType(input: addOtpType!): Status!
+ *removeOtpType(input: removeOtpType!): Status!
+ 
+Query
+  *getOtpType: [OtpType]!
 
 Thing we can do 
 * Add otp type 
@@ -37,7 +34,6 @@ examples :
 
 mutation{
   addOtpType(input:{otpLength:6,keyPrefix:"pop-otp",otp_validity_minutes:10,retry_limit:3, resent_limit:5 ,mobile_message: "Your OTP to complete your mobile verification on CaratLane is {{otp}}. It will be valid for the next {{validity}} mins. Please do not share your OTP with anyone.",retry_lock_minutes:30,resend_lock_minutes:5,otpType:"pop"}){
-    
     status
     message
     other_message
