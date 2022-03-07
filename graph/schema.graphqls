@@ -1,0 +1,56 @@
+type Status {
+  status: Boolean!
+  message: String!
+  other_message: String!
+}
+
+
+input sendOTP {
+  channel: String!
+  otp_type: String!
+}
+
+input verifyOTP {
+  channel: String!
+  otp: String!
+  otp_type: String!
+}
+
+input addOtpType {
+  otpLength: Int!
+  keyPrefix: String!
+  otp_validity_minutes: Int!  
+  retry_limit: Int!
+  resent_limit: Int!
+  mobile_message: String!
+  retry_lock_minutes: Int!
+  resend_lock_minutes: Int!
+  otpType: String!
+}
+
+type OtpType {
+  otpLength: Int!
+  keyPrefix: String!
+  otp_validity_minutes: Int!  
+  retry_limit: Int!
+  resent_limit: Int!
+  mobile_message: String!
+  retry_lock_minutes: Int!
+  resend_lock_minutes: Int!
+  otpType: String!
+}
+
+input removeOtpType {
+  otpType: String!
+}
+
+type Mutation {
+  sendOTP(input: sendOTP!): Status!
+  verifyOTP(input: verifyOTP!): Status!
+  addOtpType(input: addOtpType!): Status!
+  removeOtpType(input: removeOtpType!): Status!
+}
+
+type Query { 
+  getOtpType:[OtpType]!
+} 
