@@ -1,36 +1,35 @@
-# otp_service
-otp service written in go lang 
+# OTP Service
+OTP graphql service written in go lang with gqlgen go library
 
 
-Mutation 
- *sendOTP(input: sendOTP!): Status!
- *verifyOTP(input: verifyOTP!): Status!
- *addOtpType(input: addOtpType!): Status!
- *removeOtpType(input: removeOtpType!): Status!
+**Mutation**
+* sendOTP(input: sendOTP!): Status!
+* verifyOTP(input: verifyOTP!): Status!
+* addOtpType(input: addOtpType!): Status!
+* removeOtpType(input: removeOtpType!): Status!
+
  
-Query
-  *getOtpType: [OtpType]!
+**Query**
+  * getOtpType: [OtpType]!
 
-Thing we can do 
-* Add otp type 
+**Thing we can do 
+*** Add otp type 
 * remove otp type
 * get all otp type 
 * send otp
 * verify otp
 
-
-
-ToDO 
+**ToDO** 
 Adding email and sms sending layer
 
-Boot 
+**Boot** 
 go run server.go
 open http://localhost:3001/ 
 
-note: make sure redis is running in your local machine 
+**note**: make sure redis is running in your local machine 
 
 
-examples :
+**Examples** :
 
 mutation{
   addOtpType(input:{otpLength:6,keyPrefix:"pop-otp",otp_validity_minutes:10,retry_limit:3, resent_limit:5 ,mobile_message: "Your OTP to complete your mobile verification on CaratLane is {{otp}}. It will be valid for the next {{validity}} mins. Please do not share your OTP with anyone.",retry_lock_minutes:30,resend_lock_minutes:5,otpType:"pop"}){
