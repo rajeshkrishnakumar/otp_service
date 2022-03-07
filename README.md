@@ -3,21 +3,14 @@ otp service written in go lang
 
 
 type Mutation {
-  #
   sendOTP(input: sendOTP!): Status!
-
-  #
   verifyOTP(input: verifyOTP!): Status!
-
-  #
   addOtpType(input: addOtpType!): Status!
-
-  #
   removeOtpType(input: removeOtpType!): Status!
 }
 
-type Query {
-  #
+
+Query {
   getOtpType: [OtpType]!
 }
 
